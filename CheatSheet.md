@@ -4,24 +4,22 @@
 
 ### Listar ficheiros
 
-Comando para listar os ficheiros de um diretório.
-
-Para listar todos os ficheiros de um diretório:
+**Listar todos os ficheiros** de um diretório:
 ```bash
 ls
 ```
 
-Para listar todos os ficheiros de um diretório, incluindo os ficheiros ocultos:
+**Listar todos os ficheiros de um diretório** (incluindo os ficheiros ocultos):
 ```bash
 ls -a
 ```
 
-Para listar detalhes de todos os ficheiros de um diretório:
+**Listar detalhes** de todos os ficheiros de um diretório:
 ```bash
 ls -l
 ```
 
-Os acessos de leitura, escrita e execução são representados por:
+Os acessos de leitura (r), escrita (w) e execução (x) **são representados por**:
 
 | Tipo de Ficheiro | Owner rwx | Group rwx | Others rwx | Owner | Group | Size | Date | Name |
 
@@ -46,6 +44,11 @@ rmdir diretório
 **Mudar** de diretório:
 ```bash
 cd diretório
+```
+
+**Listar** o diretório atual:
+```bash
+pwd
 ```
 
 

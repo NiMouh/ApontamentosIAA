@@ -1,12 +1,4 @@
-# Avaliação
-- Teórica: 9 valores
-  - 2 frequências;
-  - A segunda frequencia é em época de exames; 
-- Prática: 11 valores
-  - 1 trabalho prático (grupo de duas pessoas): 8 valores;
-  - Apresentação de um artigo (grupo de quatro pessoas): 3 valores;
-
-# Conteúdo
+# Aula 1 - Introdução a Integridade, Autenticação e Autorização
 
 ## Definições
 
