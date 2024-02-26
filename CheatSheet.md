@@ -103,6 +103,21 @@ touch ficheiro
 cat ficheiro
 ```
 
+**Comparar** o conteúdo de dois ficheiros:
+```bash
+diff ficheiro1 ficheiro2 # Se não houver diferenças, não é mostrado nada
+```
+
+**Procurar** conteúdo num ficheiro:
+```bash
+grep "conteúdo" ficheiro
+```
+
+**Comprimir** um ficheiro:
+```bash
+zip ficheiro.zip ficheiro
+```
+
 ### Grupos
 
 **Criar** um grupo:
@@ -252,3 +267,68 @@ Permite criar um ambiente isolado para um utilizador.
 ```bash
 chroot diretório comando
 ```
+
+## OpenGPG
+
+OpenGPG é uma implementação *open-source* do protocolo PGP (*Pretty Good Privacy*) que permite a cifragem e assinatura de mensagens.
+
+**Gerar** um par de chaves:
+```bash
+gpg --full-generate-key
+```
+
+**Editar** uma chave:
+```bash
+gpg --edit-key <ID_DA_CHAVE>
+```
+
+**Listar** chaveiro público:
+```bash
+gpg --list-keys
+```
+
+**Listar** chaveiro privado:
+```bash
+gpg --list-secret-keys
+```
+
+**Listar** assinaturas de uma chave:
+```bash
+gpg --list-sigs <ID_DA_CHAVE>
+```
+
+**Revogar** uma chave pública:
+```bash
+gpg --delete-key <ID_DA_CHAVE>
+```
+
+**Revogar** uma chave privada:
+```bash
+gpg --delete-secret-key <ID_DA_CHAVE>
+```
+
+**Exportar** chave pública:
+```bash
+gpg --armor --export <ID_DA_CHAVE> --output <FICHEIRO>
+```
+
+**Exportar** chave privada:
+```bash
+gpg --import <FICHEIRO>
+```
+
+**Cifrar** um ficheiro:
+```bash
+gpg --decrypt <FICHEIRO_CIFRADO>
+```
+
+**Decifrar** um ficheiro:
+```bash
+gpg --sign-key <ID_DA_CHAVE>
+```
+
+## OpenSSH
+
+OpenSSH é uma implementação *open-source* do protocolo SSH (*Secure Shell*) que permite a comunicação segura entre computadores.
+
+(Por especificar)
