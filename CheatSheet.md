@@ -2,6 +2,29 @@
 
 ## Comandos básicos
 
+### Manual
+
+**Procurar** por um comando:
+```bash
+man comando
+```
+
+O manual é dividido em várias **secções**:
+- **1**: comandos do utilizador;
+- **2**: chamadas do sistema;
+- **3**: funções da biblioteca C;
+- **4**: ficheiros especiais;
+- **5**: formatos de ficheiros;
+- **6**: jogos;
+- **7**: convenções e protocolos;
+- **8**: comandos administrativos.
+- **9**: rotinas do *kernel*.
+
+Para **procurar** por uma secção específica:
+```bash
+man <número_da_secção> comando
+```
+
 ### Listar ficheiros
 
 **Listar todos os ficheiros** de um diretório:
@@ -41,6 +64,8 @@ mkdir diretório
 rmdir diretório
 ```
 
+Nota: Para apagar um diretório com ficheiros, é necessário usar a flag `-r` para apagar **recursivamente**.
+
 **Mudar** de diretório:
 ```bash
 cd diretório
@@ -49,6 +74,11 @@ cd diretório
 **Listar** o diretório atual:
 ```bash
 pwd
+```
+
+**Localizar** um programa:
+```bash
+which programa
 ```
 
 
@@ -81,20 +111,22 @@ comando1 | comando2
 
 ### Ficheiros
 
-**Mover** um ficheiro:
+**Mover** um ficheiro/diretório:
 ```bash
 mv ficheiro destino
 ```
 
-**Apagar** um ficheiro:
+**Apagar** um ficheiro/diretório:
 ```bash
 rm ficheiro
 ```
 
-**Copiar** um ficheiro:
+**Copiar** um ficheiro/diretório:
 ```bash
 cp ficheiro destino
 ```
+
+Nota: Para copiar/apagar diretórios com ficheiros, é necessário usar a flag `-r` para copiar/apagar **recursivamente**.
 
 **Criar** um ficheiro:
 ```bash
