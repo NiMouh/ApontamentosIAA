@@ -150,7 +150,7 @@ S pode ler O se e só se:
 
 ### Principio de Tranquilidade (*Tranquility Principle*)
 
-Segundo o principio de transquilidade, o acesso a um objeto pode ter:
+Segundo o principio de tranquilidade, o acesso a um objeto pode ter:
  - *Strong tranquility*: o nível de segurança de um objeto não pode ser alterado;
  - *Weak tranquility*: o nível de segurança de um objeto pode ser alterado, caso o sistema não seja comprometido.
 

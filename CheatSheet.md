@@ -303,6 +303,24 @@ Permite criar um ambiente isolado para um utilizador.
 chroot diretório comando
 ```
 
+### *Capabilities*
+
+Comando para visualizar as *capabilities* de um processo.
+```bash	
+getpcaps ficheiro
+```
+
+Comando para definir as *capabilities* de um processo.
+```bash
+setpcaps capacidade ficheiro
+```
+
+Comando para ver listas de *capabilities* de um processo.
+```bash
+capsh --print
+```
+
+
 ## OpenGPG
 
 OpenGPG é uma implementação *open-source* do protocolo PGP (*Pretty Good Privacy*) que permite a cifragem e assinatura de mensagens.
