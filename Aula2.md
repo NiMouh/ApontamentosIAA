@@ -12,20 +12,6 @@ Neste fluxo de autenticação, temos:
 
 (*) Este token contém informação sobre a quais recursos o **Resource Owner** tem acesso e *timestamp* dos mesmos.
 
-### *Authorization Endpoint*
-
-É o endpoint que o **Resource Owner** acede para autenticar-se e autorizar a aplicação a aceder aos seus recursos diretamente pelo **Authorization Server**.
-
-Exemplo: Iniciar sessão com o Google, Facebook, etc.
-
-### *Redirection Endpoint*
-
-É o endpoint que a aplicação (*client*) fornece ao **Authorization Server** para onde o **Resource Owner** será redirecionado após a autenticação.
-
-## *Communication endpoints*
-
-É um serviço que permite **autenticar** o *resource owner* (utilizador).
-
 Delega o acesso a recursos protegidos a uma aplicação (*client*) e envia uma autorização **concedida** para um **endpoint de redirecionamento**. 
 
 Existem 3 tipos de *endpoints*:
@@ -50,9 +36,9 @@ São aplicações que conseguem manter segredo, como *secure servers*, etc.
 São relativas á **capacidade de interagir com o utilizador e obter autorização**.
 
 Temos:
-- **Web Application**: 
-- **User Agent**:
-- **Native Application**:
+- **Web Application**: Cliente que é executado num servidor *web*.
+- **User Agent**: Cliente executa o programa numa *user agent* (navegador).
+- **Native Application**: Cliente que é executado num dispositivo do utilizador.
 
 ## Registo de Aplicações (*Clients*)
 
@@ -66,9 +52,9 @@ Isto inclui tanto:
 
 É um conjunto de bytes aleatórios que fazem sentido apenas para o **Resource Server** e o **Authorization Server**.
 
-- **Authorization grant**:
-- **Access token**:
-- **Refresh token**:
+- **Authorization grant**: Permite, após autenticação do *resource over* e autorização, obter acesso a um recurso.
+- **Access token**: Permite aceder a um recurso.
+- **Refresh token**: Permite obter um novo *access token* sem a necessidade de autenticação do *resource owner*.
 
 ### *Bearer Tokens*
 
@@ -78,14 +64,63 @@ Nota: Os *clients* podem fornecer *tokens* de acesso a terceiros.
 
 ## OAuth flows
 
-Existem vários fluxos de autenticação OAuth, sendo os mais comuns:
-- **Authorization code flow**: 
-- **Implicit flow**: 
-- **Resource owner password credentials flow**: 
-- **Client credentials flow**: 
 
 
-# Prática 2 - Gestão de recursos e monitorização com *cgroups*
+Existem vários fluxos de autenticação OAuth, estes têm alguns aspetos em comum:
+
+| OAuth flows          | *frontend* | *backend* | interage com o *user* | *client secret* |
+| -------------------- | ---------- | --------- | --------------------- | --------------- |
+| Authorization code   | Sim        | Sim       | Sim                   | Sim             |
+| Implicit grande      | Sim        | Não       | Sim                   | Não             |
+| Password credentials | Sim        | Sim       | Sim                   | Sim             |
+| Client credentials   | Não        | Sim       | Não                   | Sim             |
+
+### *Authorization code flow*
+
+Modelo mais seguro, que segue a arquitetura *3-legged* (*Client*, *Resource Owner*, *Authorization Server*).
+
+Funciona da seguinte forma:
+1. OAuth *server* autentica o *resource owner*: nome de utilizador e palavra-passe, ou outro método;
+2. OAuth *server* autentica o *client*: ID do cliente + segredo do cliente + autorização HTTP;
+3. *Client* autentica o OAuth *server*: Certificado + URL;
+
+Nota: Para isto é necessário o armazenamento dos *tokens*, ID do cliente e segredo do cliente.
+
+### *Implicit flow (grant)* 
+
+Normalmente utilizado em *Single Page Applications* (SPA), onde não existe um *backend*. É uma maneira de obter um *access token* sem a necessidade de um *client secret*.
+
+Funciona da seguinte forma:
+1. *Browser* solicita um *access token* e é feito (se necessário) uma autenticação do utilizador;
+2. *Browser* recebe o *access token* e pode aceder aos recursos.
+
+### *Resource owner password credentials flow*
+
+Normalmente utilizado em *confidential clients*. Existe a partilha das credenciais do *resource owner* com o *client* (para isto funcionar, o *client* deve ser confiável).
+
+Funciona da seguinte forma:
+1. *Client* solicita um *access token* com as credenciais do *resource owner*;
+2. *Client* recebe o *access token*.
+3. *Client* pode aceder aos recursos.
+
+### *Client credentials flow*
+
+Utiliza a arquitetura *2-legged* (*Client*, *Resource Server*). O *client* obtém um *access token* diretamente, **não necessitando de um *resource owner* para autenticação**.
+
+Funciona da seguinte forma:
+1. *Client* solicita um *access token* com as suas credenciais (ID do cliente + segredo do cliente);
+2. *Client* recebe o *access token*;
+3. *Client* pode aceder aos recursos.
+
+### *Proof Key for Code Exchange* (PKCE)
+
+É um método de segurança para o *Authorization Code Flow*. Utiliza um *code challenge*, sendo este um *hash* de um *code verifier*.
+
+### *Device authorization grant*
+
+Utiliza um segundo dispositivo para fazer a autenticação e autorizar o acesso a um recurso (e.g. *smartphone*, *tablet*).
+
+# Prática 2 - Gestão de recursos e monitorização com `cgroups`
 
 Controladores `cgroup` são utilizados para limitar recursos de um grupo de processos.
 
